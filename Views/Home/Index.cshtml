@@ -1,0 +1,44 @@
+﻿<style>
+    .jumbotron {
+        background-image: url('/images/hero.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .jumbotron h1 {
+        font-size: 3.5rem;
+    }
+</style>
+<div class="jumbotron">
+    <h1 class="display-4">Scadenzario</h1>
+    <p class="lead"><b>Gestisci in maniera semplice e veloce tutte le tue scadenze!<br>
+        Scegli provider come PayPal e Stripe per pagare velocemente gli importi.</b></p>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</div>
+<br/>
+<br>
+<section>
+    <div class="row">
+        <div class="col-md-4">
+            <h1 style="color: black"><b>Gestione Scadenze</b></h1>
+            <p><b>Dal menù Scadenze è possibile creare e gestire le scadenze.
+            </b></p>
+            <p><a data-toggle="tooltip" title="Gestione Scadenze" class="btn btn-warning" asp-controller="Scadenze" asp-action="Index">Gestione Scadenze</a></p>
+        </div>
+        <div class="col-md-4">
+            <h1 style="color: black"><b>Gestione Beneficiario</b></h1>
+            <p><b>Dal menù Beneficiari è possibile creare tutti i beneficiari delle scadenze.</b></p>
+            <p><a data-toggle="tooltip" title="Gestione Beneficiario" class="btn btn-warning" asp-controller="Beneficiari" asp-action="Index">Gestione Beneficiario</a></p>
+        </div>
+        <div class="col-md-4">
+            <h1 style="color:black"><b>Gestione Utenti</b></h1>
+            <p><b>.NET Core Security mette a disposizione un efficiente gestione del profilo utente,
+                in modo semplice e sicuro.</b></p>
+            <p><a data-toggle="tooltip" title="Login" class="btn btn-warning" asp-area="Identity" asp-page="/Account/Manage/Index">Gestione Utenti</a></p>
+        </div>
+    </div>
+</section>
