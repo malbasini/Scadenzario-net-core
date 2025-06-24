@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "UmmGaQoffpA=",
+  "dgSpecHash": "Zy9dtUQxRks=",
   "success": true,
   "projectFilePath": "/Users/malbasini/Documents/Software/Scadenzario/Scadenzario/Scadenzario.csproj",
   "expectedPackageFiles": [
@@ -146,7 +146,7 @@
     "/Users/malbasini/.nuget/packages/nuget.versioning/6.11.0/nuget.versioning.6.11.0.nupkg.sha512",
     "/Users/malbasini/.nuget/packages/paypalcheckoutsdk/1.0.4/paypalcheckoutsdk.1.0.4.nupkg.sha512",
     "/Users/malbasini/.nuget/packages/paypalhttp/1.0.1/paypalhttp.1.0.1.nupkg.sha512",
-    "/Users/malbasini/.nuget/packages/pomelo.entityframeworkcore.mysql/9.0.0-preview.2.efcore.9.0.0/pomelo.entityframeworkcore.mysql.9.0.0-preview.2.efcore.9.0.0.nupkg.sha512",
+    "/Users/malbasini/.nuget/packages/pomelo.entityframeworkcore.mysql/9.0.0-preview.3.efcore.9.0.0/pomelo.entityframeworkcore.mysql.9.0.0-preview.3.efcore.9.0.0.nupkg.sha512",
     "/Users/malbasini/.nuget/packages/runtime.native.system.data.sqlclient.sni/4.7.0/runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "/Users/malbasini/.nuget/packages/runtime.win-arm64.runtime.native.system.data.sqlclient.sni/4.4.0/runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "/Users/malbasini/.nuget/packages/runtime.win-x64.runtime.native.system.data.sqlclient.sni/4.4.0/runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

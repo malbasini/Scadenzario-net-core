@@ -123,7 +123,7 @@ namespace Scadenzario.Controllers
                 }
                 else
                 {
-                    TempData["Message"] = "Beneficiario eliminato con successo!";
+                    TempData["Message"] = "Beneficiario eliminato con successo ed email all'amministratore inviata correttamente!";
                     return RedirectToAction(nameof(Index));
                 }
             }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "su3zK28l4VZ5wNyl5zn3c85fsoLxE9cIC5/8Vm+qTkE=",
+  "Hash": "VDS9O3gNLAzUJge9dYqMyQh5yQTPyig7D4Om/3og+Co=",
   "Source": "Scadenzario",
   "BasePath": "_content/Scadenzario",
   "Mode": "Default",
@@ -4089,6 +4089,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/microsoft.png"
+    },
+    {
+      "Identity": "/Users/malbasini/Documents/Software/Scadenzario/Scadenzario/wwwroot/images/twitter.jpg",
+      "SourceId": "Scadenzario",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/malbasini/Documents/Software/Scadenzario/Scadenzario/wwwroot/",
+      "BasePath": "_content/Scadenzario",
+      "RelativePath": "images/twitter#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "a5snd6dji3",
+      "Integrity": "wnyxDrbiyL/2Y8TkVJPi0tH96lr5KqKXHbu0CBJyGFA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/twitter.jpg"
     },
     {
       "Identity": "/Users/malbasini/Documents/Software/Scadenzario/Scadenzario/wwwroot/images/twitter.png",
@@ -14723,6 +14744,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-pD9EP2HktnLaTGbSdQeLAe3oE1hT0DGOQoLLUT6Ep4o="
+        }
+      ]
+    },
+    {
+      "Route": "images/twitter.a5snd6dji3.jpg",
+      "AssetFile": "/Users/malbasini/Documents/Software/Scadenzario/Scadenzario/wwwroot/images/twitter.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6263"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wnyxDrbiyL/2Y8TkVJPi0tH96lr5KqKXHbu0CBJyGFA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 09 Jun 2025 04:26:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "a5snd6dji3"
+        },
+        {
+          "Name": "label",
+          "Value": "images/twitter.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wnyxDrbiyL/2Y8TkVJPi0tH96lr5KqKXHbu0CBJyGFA="
+        }
+      ]
+    },
+    {
+      "Route": "images/twitter.jpg",
+      "AssetFile": "/Users/malbasini/Documents/Software/Scadenzario/Scadenzario/wwwroot/images/twitter.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6263"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wnyxDrbiyL/2Y8TkVJPi0tH96lr5KqKXHbu0CBJyGFA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 09 Jun 2025 04:26:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wnyxDrbiyL/2Y8TkVJPi0tH96lr5KqKXHbu0CBJyGFA="
         }
       ]
     },

@@ -33,6 +33,10 @@
       "PackagePath": "staticwebassets/images/microsoft.png"
     },
     {
+      "Id": "/Users/malbasini/Documents/Software/Scadenzario/Scadenzario/wwwroot/images/twitter.jpg",
+      "PackagePath": "staticwebassets/images/twitter.jpg"
+    },
+    {
       "Id": "/Users/malbasini/Documents/Software/Scadenzario/Scadenzario/wwwroot/images/twitter.png",
       "PackagePath": "staticwebassets/images/twitter.png"
     },

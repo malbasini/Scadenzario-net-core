@@ -84,6 +84,18 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"swwrtlbmay"},{"Name":"integrity","Value":"sha256-pD9EP2HktnLaTGbSdQeLAe3oE1hT0DGOQoLLUT6Ep4o="},{"Name":"label","Value":"_content/Scadenzario/images/microsoft.png"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"13036"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022pD9EP2HktnLaTGbSdQeLAe3oE1hT0DGOQoLLUT6Ep4o=\u0022"},{"Name":"Last-Modified","Value":"Fri, 25 Apr 2025 05:47:58 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Scadenzario/images/twitter.a5snd6dji3.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\twitter.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"a5snd6dji3"},{"Name":"integrity","Value":"sha256-wnyxDrbiyL/2Y8TkVJPi0tH96lr5KqKXHbu0CBJyGFA="},{"Name":"label","Value":"_content/Scadenzario/images/twitter.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"6263"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022wnyxDrbiyL/2Y8TkVJPi0tH96lr5KqKXHbu0CBJyGFA=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 04:26:53 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Scadenzario/images/twitter.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\twitter.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-wnyxDrbiyL/2Y8TkVJPi0tH96lr5KqKXHbu0CBJyGFA="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"6263"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022wnyxDrbiyL/2Y8TkVJPi0tH96lr5KqKXHbu0CBJyGFA=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 04:26:53 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Scadenzario/images/twitter.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\twitter.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
