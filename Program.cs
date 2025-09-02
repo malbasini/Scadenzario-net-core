@@ -106,8 +106,6 @@ var builder = WebApplication.CreateBuilder(args);
             builder.Services.Configure<StripeOptions>(builder.Configuration.GetSection("Stripe"));
 
 
-
-
 var app = builder.Build();
 ConfigureApp(app);
 static void ConfigureApp(WebApplication app)
