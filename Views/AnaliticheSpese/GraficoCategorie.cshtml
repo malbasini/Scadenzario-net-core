@@ -31,10 +31,10 @@
         <form method="get" asp-action="GraficoCategorie" asp-controller="AnaliticheSpese">
             <div class="input-group">
                 <div class="input-group-text">
-                    dal: <input type="date" name="dal" class="form-control form-control-sm" value="@(Model.Dal?.ToString("dd-MM-yyyy"))"/>
+                    dal: <input type="date" name="dal" class="form-control form-control-sm" value="@(Model.Dal?.ToString("yyyy-MM-dd"))"/>
                 </div>
                 <div class="input-group-text">
-                    al: <input type="date" name="al" class="form-control form-control-sm" value="@(Model.Al?.ToString("dd-MM-yyyy"))"/>
+                    al: <input type="date" name="al" class="form-control form-control-sm" value="@(Model.Al?.ToString("yyyy-MM-dd"))"/>
                 </div>
                 <div class="input-group-text">
                     <button type="submit" class="btn btn-outline-primary form-control form-control-sm">Applica</button>
