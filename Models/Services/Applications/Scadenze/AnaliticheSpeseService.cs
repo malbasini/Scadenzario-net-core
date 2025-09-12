@@ -28,6 +28,7 @@ public class AnaliticheSpeseService
             q = q.Where(s => s.DataScadenza <= al.Value.Date);
         
         var rows = await q
+            .Where(s=> s.Status=="PAGATA")    
             .GroupBy(s => s.Denominazione) // string? OK. Se nullable, vedi nota sotto.
             .Select(g => new
             {
