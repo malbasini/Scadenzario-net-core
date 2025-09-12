@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using Scadenzario.Models.Entities;
+using Scadenzario.Models.Entity;
 using Scadenzario.Models.ViewModels.Ricevute;
 
 namespace Scadenzario.Models.ViewModels.Scadenze

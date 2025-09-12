@@ -45,7 +45,7 @@ var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddSingleton<IEmailSender, MailKitEmailSender>();
             builder.Services.AddScoped<IPaymentGatewayStripe, StripePaymentGateway>();
             builder.Services.AddScoped<IPaymentGatewayPayPal, PaypalPaymentGateway>();
-
+            builder.Services.AddScoped<AnaliticheSpeseService>();
 
                 builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
                 {

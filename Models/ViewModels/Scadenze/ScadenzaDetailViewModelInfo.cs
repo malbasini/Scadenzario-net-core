@@ -1,4 +1,5 @@
 using Scadenzario.Models.Entities;
+using Scadenzario.Models.Entity;
 using Scadenzario.Models.ViewModels.Ricevute;
 
 namespace Scadenzario.Models.ViewModels.Scadenze

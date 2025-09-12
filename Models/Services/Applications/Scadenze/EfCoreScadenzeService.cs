@@ -9,6 +9,7 @@ using MyCourse.Models.Exceptions.Application;
 using Scadenzario.Areas.Identity.Data;
 using Scadenzario.Controllers;
 using Scadenzario.Models.Entities;
+using Scadenzario.Models.Entity;
 using Scadenzario.Models.InputModels;
 using Scadenzario.Models.InputModels.Beneficiari;
 using Scadenzario.Models.InputModels.Scadenze;

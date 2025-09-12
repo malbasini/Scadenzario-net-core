@@ -18,10 +18,22 @@
     }
     <br>
     <div class="row">
-        <div class="col-md-3">
-              <a class="btn btn-outline-primary btn-sm" asp-action="Create" asp-controller="Scadenze"><i class="fas fa-plus-circle"></i>  Nuova Scadenza</a>
+        <div class="col-md-5">
+            <div class="input-group">
+                <div class="input-group-text">
+                    <a class="btn btn-outline-primary btn-sm" asp-action="Create" asp-controller="Scadenze"><i class="fas fa-plus-circle"></i> Nuova Scadenza</a>
+                </div>
+                <div class="input-group-text">
+                    <a class="btn btn-outline-primary"
+                       target="_blank"
+                       asp-controller="AnaliticheSpese"
+                       asp-action="GraficoCategorie">
+                        Grafico spese per beneficiario
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="col-md-9 d-flex flex-row-reverse">
+        <div class="col-md-7 flex flex-row-reverse">
             <form asp-controller="Scadenze" asp-action="Index" method="GET">
                 <div class="input-group">
                     <b style="text-align: center;">Beneficiario/Data Scadenza</b>&nbsp;&nbsp;&nbsp;<input type="text" name="search" class="form-control" placeholder="Cerca..." aria-label="Cerca..." aria-describedby="search-button" value="@Model.Input.Search">

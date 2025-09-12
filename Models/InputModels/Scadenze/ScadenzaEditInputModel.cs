@@ -3,6 +3,7 @@ using System.Runtime.InteropServices.JavaScript;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Scadenzario.Models.Entities;
+using Scadenzario.Models.Entity;
 using Scadenzario.Models.ViewModels.Ricevute;
 using Scadenze.Controllers;
 

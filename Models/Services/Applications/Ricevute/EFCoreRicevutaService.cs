@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Scadenzario.Areas.Identity.Data;
 using Scadenzario.Models.Entities;
+using Scadenzario.Models.Entity;
 using Scadenzario.Models.InputModels.Ricevute;
 using Scadenzario.Models.ViewModels.Ricevute;
 using Scadenze.Models.Exceptions.Application;

@@ -1,8 +1,9 @@
-﻿using Scadenzario.Models.Entity;
+﻿using Scadenzario.Models.Entities;
+using Scadenzario.Models.Entity;
 
 #nullable disable
 
-namespace Scadenzario.Models.Entities
+namespace Scadenzario.Models.Entity
 {
     public sealed class Scadenza
     {
