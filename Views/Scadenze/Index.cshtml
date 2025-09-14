@@ -23,11 +23,14 @@
                 <div class="input-group-append">
                     <a class="btn btn-outline-primary btn-sm" asp-action="Create" asp-controller="Scadenze"><i class="fas fa-plus-circle"></i> Nuova Scadenza</a>&nbsp;&nbsp;&nbsp;
                 </div>
+                
                 <div class="input-group-append">
                     <a class="btn btn-outline-primary btn-sm"
                        target="_blank"
                        asp-controller="AnaliticheSpese"
-                       asp-action="GraficoCategorie"><i class="fa-solid fa-chart-bar"></i>
+                       asp-action="GraficoCategorie"
+                       asp-route-filter="@Model.Input.Search">
+                        <i class="fa-solid fa-chart-bar"></i>
                         Grafico spese per beneficiario
                     </a>
                 </div>

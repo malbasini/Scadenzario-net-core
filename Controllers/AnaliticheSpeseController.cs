@@ -1,3 +1,4 @@
+using System.Globalization;
 using Microsoft.AspNetCore.Mvc;
 using Scadenzario.Models.Dtos;
 using Scadenzario.Models.Services.Applications.Scadenze;
@@ -15,9 +16,30 @@ public class AnaliticheSpeseController : Controller
     // Pagina HTML con grafico
     [HttpGet("GraficoCategorie")]
     public async Task<IActionResult> GraficoCategorie(
-        DateTime? dal, DateTime? al, CancellationToken ct)
+        DateTime? dal, DateTime? al, string? filter, CancellationToken ct)
     {
-        var data = await _svc.GetTotaliPerCategoriaAsync(dal, al, ct);
+        string? denominazione = filter;
+        DateTime? dataScadenza = null;
+
+        if (string.IsNullOrWhiteSpace(filter))
+        {
+            denominazione = null;
+            dataScadenza = null;
+        }
+        else
+        {
+            try
+            {
+                dataScadenza = DateTime.ParseExact(filter, "dd/MM/yyyy", CultureInfo.GetCultureInfo("it-IT"), DateTimeStyles.None);
+                denominazione = null;
+            }
+            catch (Exception e)
+            {
+                dataScadenza = null;
+                denominazione = filter;
+            }
+        }
+        var data = await _svc.GetTotaliPerCategoriaAsync(dal, al, denominazione, dataScadenza,ct);
 
         var vm = new GraficoCategorieViewModel
         {
@@ -28,14 +50,5 @@ public class AnaliticheSpeseController : Controller
         };
 
         return View("GraficoCategorie", vm);
-    }
-
-    // API JSON, utile per fetch lato client
-    [HttpGet("/api/scadenze/spese-per-categoria")]
-    public async Task<IActionResult> SpesePerCategoriaApi(
-        DateTime? dal, DateTime? al, CancellationToken ct)
-    {
-        List<CategoriaTotaleDto> data = await _svc.GetTotaliPerCategoriaAsync(dal, al, ct);
-        return Ok(data);
     }
 }

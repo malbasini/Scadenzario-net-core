@@ -1,4 +1,5 @@
 using System.Data.Entity;
+using System.Globalization;
 using Scadenzario.Areas.Identity.Data;
 
 namespace Scadenzario.Models.Services.Applications.Scadenze;
@@ -17,15 +18,24 @@ public class AnaliticheSpeseService
     public async Task<List<CategoriaTotaleDto>> GetTotaliPerCategoriaAsync(
         DateTime? dal = null,
         DateTime? al  = null,
+        string? denominazione = null,
+        DateTime? data = null,
         CancellationToken ct = default)
     {
+        
         var q = _ctx.Scadenze.AsNoTracking().AsQueryable();
-
+        
         if (dal is not null)
             q = q.Where(s => s.DataScadenza >= dal.Value.Date);
 
         if (al is not null)
             q = q.Where(s => s.DataScadenza <= al.Value.Date);
+        
+        if (data is not null)
+            q = q.Where(s => s.DataScadenza == data.Value.Date);
+
+        if (denominazione is not null)
+            q = q.Where(s => s.Denominazione == denominazione);
         
         var rows = await q
             .Where(s=> s.Status=="PAGATA")    
