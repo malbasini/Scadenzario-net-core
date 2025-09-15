@@ -35,7 +35,8 @@ public class AnaliticheSpeseService
             q = q.Where(s => s.DataScadenza == data.Value.Date);
 
         if (denominazione is not null)
-            q = q.Where(s => s.Denominazione == denominazione);
+            q = q.Where(s=> s.Denominazione.Contains(denominazione));
+
         
         var rows = await q
             .Where(s=> s.Status=="PAGATA")    
