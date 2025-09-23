@@ -10,6 +10,8 @@ public sealed class GraficoCategorieViewModel
     public required List<int> Anni { get; init; }
     
     public required int AnnoSelezionato { get; init; }
+    
+    public required string? Chart { get; init; }
    
     
 }

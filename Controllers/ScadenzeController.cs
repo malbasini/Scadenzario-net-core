@@ -1,3 +1,4 @@
+using System.Globalization;
 using AspNetCore.ReCaptcha;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors.Infrastructure;
@@ -17,24 +18,97 @@ namespace Scadenzario.Controllers
     {
         private readonly IScadenzeService _service;
         private readonly IRicevuteService _ricevute;
-        public ScadenzeController(ICachedScadenzeService service, IRicevuteService ricevute)
+        private readonly AnaliticheSpeseService _svc;
+        public ScadenzeController(ICachedScadenzeService service, IRicevuteService ricevute, AnaliticheSpeseService svc)
         {
             _service = service;
             _ricevute = ricevute;
+            _svc = svc;
         }
         [AllowAnonymous]
-        public async Task<IActionResult> Index(ScadenzaListInputModel input)
+        public async Task<IActionResult> Index(ScadenzaListInputModel input, [FromQuery] int? anno, CancellationToken ct)
         {
             ViewData["Title"] = "Lista Scadenze";
-            ListViewModel<ScadenzaViewModel> scadenze = await _service.GetScadenzeAsync(input);
+            ListViewModel<ScadenzaViewModel>? scadenze = await _service.GetScadenzeAsync(input,anno ?? DateTime.UtcNow.Year, ct);
+            
+            var anni = await _svc.GetAnniDisponibiliAsync(ct);
+            var selected = anno ?? DateTime.UtcNow.Year;
 
             ScadenzaListViewModel viewModel = new ScadenzaListViewModel
             {
                 Scadenze = scadenze,
-                Input = input
+                Input = input,
+                Anni = anni,
+                AnnoSelezionato = selected,
             };
 
             return View(viewModel);
+        }
+        // GET /Scadenze/GraficoCategorie
+        [HttpGet("GraficoCategorie")]
+        public async Task<IActionResult> GraficoCategorie([FromQuery] int? anno, DateTime? dal, DateTime? al, string? chart, string? filter,CancellationToken ct)
+        {
+            TempData["dal"] = dal;
+            TempData["al"] = al;
+            string? denominazione = filter;
+            DateTime? dataScadenza = null;
+
+            if (string.IsNullOrWhiteSpace(filter))
+            {
+                denominazione = null;
+                dataScadenza = null;
+            }
+            else
+            {
+                try
+                {
+                    dataScadenza = DateTime.ParseExact(filter, "dd/MM/yyyy", CultureInfo.GetCultureInfo("it-IT"), DateTimeStyles.None);
+                    denominazione = null;
+                }
+                catch (Exception e)
+                {
+                    dataScadenza = null;
+                    denominazione = filter;
+                }
+            }
+            
+            // Normalizza/valida il tipo
+            static string Normalize(string? t) => t?.ToLowerInvariant() switch
+            {
+                "bar"        => "bar",
+                "line"       => "line",
+                "pie"        => "pie",
+                "doughnut"   => "doughnut",
+                "polararea"  => "polarArea",   // accetto anche “polararea”
+                "polarArea"  => "polarArea",
+                "radar"      => "radar",
+                _            => "bar"
+            };
+            var chartType = Normalize(chart);
+            var anni = await _svc.GetAnniDisponibiliAsync(ct);
+            var selected = anno ?? DateTime.UtcNow.Year;
+
+            var data = await _svc.GetTotaliPerCategoriaAnnoAsync(selected,dal,al,denominazione, ct,dataScadenza);
+            var vm = new GraficoCategorieViewModel
+            {
+                Anni = anni,
+                AnnoSelezionato = selected,
+                Labels = data.Select(d => d.Categoria).ToList(),
+                Values = data.Select(d => d.Totale).ToList(),
+                Dal = dal,
+                Al = al,
+                Chart = chartType
+            };
+            return View("GraficoCategorie", vm);
+        }
+
+        // API JSON (opzionale) /api/scadenze/spese-per-categoria?anno=2025
+        [HttpGet("/api/scadenze/spese-per-categoria")]
+        public async Task<IActionResult> SpesePerCategoriaApi([FromQuery] int? anno, DateTime? dal, DateTime? al, string? filter,CancellationToken ct)
+        {
+            var selected = anno ?? DateTime.UtcNow.Year;
+            var data = await _svc.GetTotaliPerCategoriaAnnoAsync(selected,dal,al,filter, ct);
+            return Ok(data);
         }
         public async Task<IActionResult> Detail(int id)
         {

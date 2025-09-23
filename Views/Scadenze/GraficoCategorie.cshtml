@@ -1,5 +1,6 @@
 @model Scadenzario.Models.ViewModels.Scadenze.GraficoCategorieViewModel
 @using System.Text.Json
+@using Microsoft.AspNetCore.Mvc.Rendering
 @{
      
         Layout = "_Layout1.cshtml";
@@ -11,7 +12,9 @@
             ? $"({dal:dd-MM-yyyy} → {al:dd-MM-yyyy}) anno " + Model.AnnoSelezionato
             : string.Empty;
 }
-
+@{
+    var items = new SelectList(new[] { "bar","line","pie","doughnut","polarArea","radar" }, Model.Chart);
+}
 <!doctype html>
 <html>
 <head>
@@ -20,8 +23,19 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body { font-family: system-ui, Arial, sans-serif; margin: 24px; }
-        .wrap { max-width: 900px; margin: 0 auto; }
+        .wrap { max-width: 12000px; margin: 0 auto; }
         .toolbar { margin-bottom: 16px; display:flex; gap:8px; align-items:center;}
+        .chart-wrap {
+            position: relative;
+            width: 100%;
+            height: 420px;      /* altezza fissa: regola a piacere */
+            overflow: hidden;
+        }
+        #chart {
+            display: block;     /* evita spazio baseline */
+            width: 100% !important;
+            height: 100% !important;  /* riempi il contenitore */
+        }
     </style>
 </head>
 <body>
@@ -47,6 +61,9 @@
                     al: <input type="date" name="al" class="form-control form-control-sm" value="@(Model.Al?.ToString("yyyy-MM-dd"))"/>
                 </div>
                 <div class="input-group-text">
+                    <button type="submit" class="btn btn-outline-primary form-control form-control-sm">Applica</button>
+                </div>
+                <div class="input-group-text">
                     anno:
                     <select id="anno" name="anno" onchange="this.form.submit()" class="form-select form-select-sm" aria-label="Small select example">
                         @foreach (var y in Model.Anni)
@@ -56,33 +73,41 @@
                     </select>
                 </div>
                 <div class="input-group-text">
-                    <button type="submit" class="btn btn-outline-primary form-control form-control-sm">Applica</button>
+                    @{
+                        var modelChart = Model.Chart == null ? "bar" : Model.Chart;
+                    }
+                    tipo grafico:&nbsp;
+                    <select id="chartType" name="chart" class="form-select form-select-sm" onchange="this.form.submit()"
+                            asp-items="items">
+                        
+                    </select>
                 </div>
             </div>
         </form>
     </div>
-    <canvas id="chart" width="800" height="320"></canvas>
+</div>
+<div class="chart-wrap">
+    <canvas id="chart"></canvas>
 </div>
 <script>
     const labels = @Html.Raw(labelsJson);
     const values = @Html.Raw(valuesJson);
+    const initialType = '@Model.Chart';  // 👈 usa il tipo passato dal controller
 
-    const ctx = document.getElementById('chart').getContext('2d');
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'Totale (€)',
-                data: values
-            }]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                y: { beginAtZero: true }
+    document.addEventListener('DOMContentLoaded', () => {
+        const el = document.getElementById('chart');
+        if (window.__speseChart?.destroy) { try { window.__speseChart.destroy(); } catch {} }
+        window.__speseChart = new Chart(el.getContext('2d'), {
+            type: initialType,
+            data: { labels, datasets: [{ label: 'Totale (€)', data: values }] },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                resizeDelay: 150,
+                devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2),
+                scales: ['pie','doughnut','polarArea','radar'].includes(initialType) ? {} : { y: { beginAtZero: true } }
             }
-        }
+        });
     });
 </script>
 </body>
