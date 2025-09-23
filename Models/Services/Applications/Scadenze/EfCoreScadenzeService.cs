@@ -57,7 +57,7 @@ namespace Scadenzario.Models.Services.Application.Scadenze
             _configuration = configuration;
 
         }
-        public async Task<ListViewModel<ScadenzaViewModel>?> GetScadenzeAsync(ScadenzaListInputModel model)
+        public async Task<ListViewModel<ScadenzaViewModel>?> GetScadenzeAsync(ScadenzaListInputModel model,  int anno, CancellationToken ct = default)
         {
             string IdUser = string.Empty;
             try                                                                                                     
@@ -89,14 +89,17 @@ namespace Scadenzario.Models.Services.Application.Scadenze
                     .Include(Scadenza => Scadenza.Ricevute)
                     .Where(Scadenze => Scadenze.IDUser == IdUser)
                     .Where(scadenze => scadenze.DataScadenza == data)
-                    .Select(scadenze => ScadenzaViewModel.FromEntity(scadenze)); //Usando metodi statici come FromEntity, la query potrebbe essere inefficiente. Mantenere il mapping nella lambda oppure usare un extension method personalizzato
+                    .Where(s => s.DataScadenza != null && s.DataScadenza!.Year == anno)
+                    .OrderByDescending(s => s.DataScadenza) // ordina come preferisci
+                    .ThenByDescending(s => s.IDScadenza)
+                    .Select(scadenze => ScadenzaViewModel.FromEntity(scadenze));
                 List<ScadenzaViewModel> scadenza = await queryLinq
                     .Skip(model.Offset)
                     .Take(model.Limit).ToListAsync();
                 int totalCount =  queryLinq.Count();
                 ListViewModel<ScadenzaViewModel> results = new ListViewModel<ScadenzaViewModel>
                 {
-                     Results=scadenza,
+                     Results=scadenza.ToList(),
                      TotalCount=totalCount
                 };
                 return results;
@@ -108,7 +111,11 @@ namespace Scadenzario.Models.Services.Application.Scadenze
                     .Include(Scadenza => Scadenza.Ricevute)
                     .Where(Scadenze => Scadenze.IDUser == IdUser)
                     .Where(scadenze => scadenze.Denominazione.Contains(model.Search))
+                    .Where(s => s.DataScadenza != null && s.DataScadenza!.Year == anno)
+                    .OrderByDescending(s => s.DataScadenza) // ordina come preferisci
+                    .ThenByDescending(s => s.IDScadenza)
                     .Select(scadenze => ScadenzaViewModel.FromEntity(scadenze)); //Usando metodi statici come FromEntity, la query potrebbe essere inefficiente. Mantenere il mapping nella lambda oppure usare un extension method personalizzato
+                     
                 List<ScadenzaViewModel> scadenza = await queryLinq
                     .Skip(model.Offset)
                     .Take(model.Limit).ToListAsync();

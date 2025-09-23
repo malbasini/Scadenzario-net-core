@@ -10,17 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 </head>
 <body>
-    <header>
-    </header>
-    <div class="container">
-        @if (TempData["ConfirmationMessage"] != null)
-        {
-        <div class="alert alert-success alert-dismissable mt-3" role="alert">
-            @TempData["ConfirmationMessage"]
+<div class="container">
+        <div class="col-12">
+            @RenderBody()
         </div>
-        }
-        @RenderBody()
-    </div>
+</div>
 <br/>
 <br/>
 <br/>

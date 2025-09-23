@@ -24,7 +24,7 @@ namespace Scadenzario.Models.Services.Applications.Scadenze
             _options = options;
         }
         
-        public Task<ListViewModel<ScadenzaViewModel>?> GetScadenzeAsync(ScadenzaListInputModel model)
+        public Task<ListViewModel<ScadenzaViewModel>?> GetScadenzeAsync(ScadenzaListInputModel model,int anno, CancellationToken ct = default)
         {
             //Metto in cache i risultati solo per le prime 5 pagine del catalogo, che reputo essere
             //le più visitate dagli utenti, e che perciò mi permettono di avere il maggior beneficio dalla cache.
@@ -38,12 +38,12 @@ namespace Scadenzario.Models.Services.Applications.Scadenze
                 return _memoryCache.GetOrCreateAsync($"Scadenze{model.Page}-{model.OrderBy}-{model.Ascending}", cacheEntry => 
                 {
                     cacheEntry.SetAbsoluteExpiration(TimeSpan.FromSeconds(_options.CurrentValue.FromSecond));
-                    return _scadenzeService.GetScadenzeAsync(model);
+                    return _scadenzeService.GetScadenzeAsync(model,anno,ct);
                 });
             }
 
             //Altrimenti uso il servizio applicativo sottostante, che recupererà sempre i valori dal database
-            return _scadenzeService.GetScadenzeAsync(model);
+            return _scadenzeService.GetScadenzeAsync(model,anno,ct);
         }
 
         public Task<ScadenzaEditInputModel> GetScadenzaForEditingAsync(int id)

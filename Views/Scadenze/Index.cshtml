@@ -19,20 +19,32 @@
     <br>
     <div class="row">
         <div class="col-md-7">
-            <div class="input-group">
-                <div class="input-group-append">
-                    <a class="btn btn-outline-primary btn-sm" asp-action="Create" asp-controller="Scadenze"><i class="fas fa-plus-circle"></i> Nuova Scadenza</a>&nbsp;&nbsp;&nbsp;
-                </div>
-                
-                <div class="input-group-append">
-                    <a class="btn btn-outline-primary btn-sm"
-                       target="_blank"
-                       asp-controller="AnaliticheSpese"
-                       asp-action="GraficoCategorie"
-                       asp-route-filter="@Model.Input.Search">
-                        <i class="fa-solid fa-chart-bar"></i>
-                        Grafico spese per beneficiario
-                    </a>
+            <div class="row">
+                <div class="input-group">
+                    <div class="input-group-append">
+                        <a class="btn btn-outline-primary btn-sm" asp-action="Create" asp-controller="Scadenze"><i class="fas fa-plus-circle"></i> Nuova Scadenza</a>&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="input-group-append">
+                        <a class="btn btn-outline-primary btn-sm"
+                           target="_blank"
+                           asp-controller="Scadenze"
+                           asp-action="GraficoCategorie"
+                           asp-route-anno="@Model.AnnoSelezionato"
+                           asp-route-filter=@Model.Input.Search>
+                            <i class="fa-solid fa-chart-bar"></i>
+                            Spese per beneficiario
+                        </a>
+                    </div>
+                    <div class="input-group-append">
+                        <form method="get" asp-controller="Scadenze" asp-action="Index" class="mb-3">
+                            <select id="anno" name="anno" onchange="this.form.submit()" class="form-select form-select-sm mb-3 ms-3" aria-label="Small select example">
+                                @foreach (var y in Model.Anni)
+                                {
+                                    <option value="@y" selected="@(y == Model.AnnoSelezionato ? "selected" : null)">@y</option>
+                                }
+                            </select>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -62,7 +74,11 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.Scadenze.Results)
+
+            @{
+                System.Diagnostics.Debug.Assert(Model.Scadenze?.Results != null, "Model.Scadenze?.Results != null");
+            }
+            @foreach (var item in Model.Scadenze.Results)
                 {
                      <partial name="Scadenze/_ScadenzaLine" model=@item></partial>
                 }

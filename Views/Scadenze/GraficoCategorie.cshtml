@@ -1,0 +1,89 @@
+@model Scadenzario.Models.ViewModels.Scadenze.GraficoCategorieViewModel
+@using System.Text.Json
+@{
+     
+        Layout = "_Layout1.cshtml";
+        ViewData["Title"] = "Spese per categoria";
+        var labelsJson = JsonSerializer.Serialize(Model.Labels);
+        var valuesJson = JsonSerializer.Serialize(Model.Values);
+        // Variante 2 – pattern matching (C# 13+)
+        string range = Model.Dal is { } dal && Model.Al is { } al
+            ? $"({dal:dd-MM-yyyy} → {al:dd-MM-yyyy}) anno " + Model.AnnoSelezionato
+            : string.Empty;
+}
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]@range</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: system-ui, Arial, sans-serif; margin: 24px; }
+        .wrap { max-width: 900px; margin: 0 auto; }
+        .toolbar { margin-bottom: 16px; display:flex; gap:8px; align-items:center;}
+    </style>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="alert alert-success" role="alert">
+            <h3 style="text-align: center"><b>GRAFICO SPESE PER BENEFICIARIO</b></h3>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+<br>
+<div class="wrap">
+    <h2>@range</h2>
+    <div class="toolbar">
+        <form method="get" asp-action="GraficoCategorie" asp-controller="Scadenze" asp-route-al=@Model.Al>
+            <div class="input-group">
+                <div class="input-group-text">
+                    dal: <input type="date" name="dal" class="form-control form-control-sm"value="@(Model.Dal?.ToString("yyyy-MM-dd"))"/>
+                </div>
+                <div class="input-group-text">
+                    al: <input type="date" name="al" class="form-control form-control-sm" value="@(Model.Al?.ToString("yyyy-MM-dd"))"/>
+                </div>
+                <div class="input-group-text">
+                    anno:
+                    <select id="anno" name="anno" onchange="this.form.submit()" class="form-select form-select-sm" aria-label="Small select example">
+                        @foreach (var y in Model.Anni)
+                        {
+                            <option value="@y" selected="@(y == Model.AnnoSelezionato ? "selected" : null)">@y</option>
+                        }
+                    </select>
+                </div>
+                <div class="input-group-text">
+                    <button type="submit" class="btn btn-outline-primary form-control form-control-sm">Applica</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <canvas id="chart" width="800" height="320"></canvas>
+</div>
+<script>
+    const labels = @Html.Raw(labelsJson);
+    const values = @Html.Raw(valuesJson);
+
+    const ctx = document.getElementById('chart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Totale (€)',
+                data: values
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+</script>
+</body>
+</html>
