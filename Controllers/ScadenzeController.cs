@@ -48,8 +48,6 @@ namespace Scadenzario.Controllers
         [HttpGet("GraficoCategorie")]
         public async Task<IActionResult> GraficoCategorie([FromQuery] int? anno, DateTime? dal, DateTime? al, string? chart, string? filter,CancellationToken ct)
         {
-            TempData["dal"] = dal;
-            TempData["al"] = al;
             string? denominazione = filter;
             DateTime? dataScadenza = null;
 
@@ -97,7 +95,8 @@ namespace Scadenzario.Controllers
                 Values = data.Select(d => d.Totale).ToList(),
                 Dal = dal,
                 Al = al,
-                Chart = chartType
+                Chart = chartType,
+                Filter = filter
             };
             return View("GraficoCategorie", vm);
         }

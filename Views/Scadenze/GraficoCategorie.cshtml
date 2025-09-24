@@ -52,7 +52,8 @@
 <div class="wrap">
     <h2>@range</h2>
     <div class="toolbar">
-        <form method="get" asp-action="GraficoCategorie" asp-controller="Scadenze" asp-route-al=@Model.Al>
+        <form method="get" asp-action="GraficoCategorie" asp-controller="Scadenze">
+            <input type="hidden" name="filter" value="@Model.Filter"/>
             <div class="input-group">
                 <div class="input-group-text">
                     dal: <input type="date" name="dal" class="form-control form-control-sm"value="@(Model.Dal?.ToString("yyyy-MM-dd"))"/>
@@ -79,7 +80,7 @@
                     tipo grafico:&nbsp;
                     <select id="chartType" name="chart" class="form-select form-select-sm" onchange="this.form.submit()"
                             asp-items="items">
-                        
+
                     </select>
                 </div>
             </div>

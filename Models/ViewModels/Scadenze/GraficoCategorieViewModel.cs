@@ -7,6 +7,7 @@ public sealed class GraficoCategorieViewModel
     public DateTime? Dal { get; init; }
     public DateTime? Al  { get; init; }
     
+    public string? Filter { get; init; }
     public required List<int> Anni { get; init; }
     
     public required int AnnoSelezionato { get; init; }
