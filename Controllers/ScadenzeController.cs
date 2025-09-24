@@ -76,8 +76,7 @@ namespace Scadenzario.Controllers
                 "bar"        => "bar",
                 "line"       => "line",
                 "pie"        => "pie",
-                "doughnut"   => "doughnut",
-                "polararea"  => "polarArea",   // accetto anche “polararea”
+                "doughnut"   => "doughnut", 
                 "polarArea"  => "polarArea",
                 "radar"      => "radar",
                 _            => "bar"

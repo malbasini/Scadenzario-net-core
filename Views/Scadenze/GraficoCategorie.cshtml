@@ -1,4 +1,5 @@
 @model Scadenzario.Models.ViewModels.Scadenze.GraficoCategorieViewModel
+
 @using System.Text.Json
 @using Microsoft.AspNetCore.Mvc.Rendering
 @{
@@ -50,38 +51,49 @@
 </div>
 <br>
 <div class="wrap">
-    <h2>@range</h2>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-10">
+            <h2>
+               @{
+                   var spese = !string.IsNullOrEmpty(range) ? "Spese per beneficiario " + range : string.Empty;
+                   @spese.TrimEnd(';')
+               }
+            </h2>
+        </div>
+   </div>  
     <div class="toolbar">
         <form method="get" asp-action="GraficoCategorie" asp-controller="Scadenze">
             <input type="hidden" name="filter" value="@Model.Filter"/>
-            <div class="input-group">
-                <div class="input-group-text">
-                    dal: <input type="date" name="dal" class="form-control form-control-sm"value="@(Model.Dal?.ToString("yyyy-MM-dd"))"/>
-                </div>
-                <div class="input-group-text">
-                    al: <input type="date" name="al" class="form-control form-control-sm" value="@(Model.Al?.ToString("yyyy-MM-dd"))"/>
-                </div>
-                <div class="input-group-text">
-                    <button type="submit" class="btn btn-outline-primary form-control form-control-sm">Applica</button>
-                </div>
-                <div class="input-group-text">
-                    anno:
-                    <select id="anno" name="anno" onchange="this.form.submit()" class="form-select form-select-sm" aria-label="Small select example">
-                        @foreach (var y in Model.Anni)
-                        {
-                            <option value="@y" selected="@(y == Model.AnnoSelezionato ? "selected" : null)">@y</option>
-                        }
-                    </select>
-                </div>
-                <div class="input-group-text">
-                    @{
-                        var modelChart = Model.Chart == null ? "bar" : Model.Chart;
-                    }
-                    tipo grafico:&nbsp;
-                    <select id="chartType" name="chart" class="form-select form-select-sm" onchange="this.form.submit()"
-                            asp-items="items">
+            <div class="row">
+                <div class="col-md-12 ms-xl-5">
+                    <div class="input-group">
+                        <div class="input-group-text">
+                            dal: <input type="date" name="dal" class="form-control form-control-sm" value="@(Model.Dal?.ToString("yyyy-MM-dd"))"/>
+                        </div>
+                        <div class="input-group-text">
+                            al: <input type="date" name="al" class="form-control form-control-sm" value="@(Model.Al?.ToString("yyyy-MM-dd"))"/>
+                        </div>
+                        <div class="input-group-text">
+                            <button type="submit" class="btn btn-outline-primary form-control form-control-sm">Applica</button>
+                        </div>
+                        <div class="input-group-text">
+                            anno:
+                            <select id="anno" name="anno" onchange="this.form.submit()" class="form-select form-select-sm" aria-label="Small select example">
+                                @foreach (var y in Model.Anni)
+                                {
+                                    <option value="@y" selected="@(y == Model.AnnoSelezionato ? "selected" : null)">@y</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="input-group-text">
+                            tipo grafico:&nbsp;
+                            <select id="chartType" name="chart" class="form-select form-select-sm" onchange="this.form.submit()"
+                                    asp-items="items">
 
-                    </select>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>
