@@ -4,10 +4,19 @@ namespace Scadenzario.Models.ViewModels.Scadenze
 {
     public class ScadenzaListViewModel:IPaginationInfo
     {
-        public ListViewModel<ScadenzaViewModel> Scadenze {get;set;}
+        public ListViewModel<ScadenzaViewModel>? Scadenze {get;set;}
         public ScadenzaListInputModel Input {get;set;}
 
-         #region Implementazione IPaginationInfo
+        #region Implementazione combo anni scadenze
+        
+        public required List<int> Anni { get; init; }
+        public required int AnnoSelezionato { get; init; }
+        //public required List<Scadenza> Scadenze { get; init; }
+        
+        #endregion
+        
+        
+        #region Implementazione IPaginationInfo
          
         int IPaginationInfo.CurrentPage => Input.Page;
 

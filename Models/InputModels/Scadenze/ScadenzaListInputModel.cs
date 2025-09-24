@@ -23,7 +23,6 @@ namespace Scadenzario.Models.InputModels.Scadenze;
             Limit = Math.Max(1, limit);
             OrderBy = orderby;
             Ascending = ascending;
-
             Offset = (Page - 1) * Limit;
         }
         public string Search { get; }

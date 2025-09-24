@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Zy9dtUQxRks=",
+  "dgSpecHash": "wNSGV9otN5U=",
   "success": true,
   "projectFilePath": "/Users/malbasini/Documents/Software/Scadenzario/Scadenzario/Scadenzario.csproj",
   "expectedPackageFiles": [
@@ -146,7 +146,7 @@
     "/Users/malbasini/.nuget/packages/nuget.versioning/6.11.0/nuget.versioning.6.11.0.nupkg.sha512",
     "/Users/malbasini/.nuget/packages/paypalcheckoutsdk/1.0.4/paypalcheckoutsdk.1.0.4.nupkg.sha512",
     "/Users/malbasini/.nuget/packages/paypalhttp/1.0.1/paypalhttp.1.0.1.nupkg.sha512",
-    "/Users/malbasini/.nuget/packages/pomelo.entityframeworkcore.mysql/9.0.0-preview.3.efcore.9.0.0/pomelo.entityframeworkcore.mysql.9.0.0-preview.3.efcore.9.0.0.nupkg.sha512",
+    "/Users/malbasini/.nuget/packages/pomelo.entityframeworkcore.mysql/9.0.0/pomelo.entityframeworkcore.mysql.9.0.0.nupkg.sha512",
     "/Users/malbasini/.nuget/packages/runtime.native.system.data.sqlclient.sni/4.7.0/runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "/Users/malbasini/.nuget/packages/runtime.win-arm64.runtime.native.system.data.sqlclient.sni/4.4.0/runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "/Users/malbasini/.nuget/packages/runtime.win-x64.runtime.native.system.data.sqlclient.sni/4.4.0/runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
@@ -197,8 +197,10 @@
     {
       "code": "NU1701",
       "level": "Warning",
-      "warningLevel": 1,
       "message": "Package 'MySql.Data.EntityFramework 9.3.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net9.0'. This package may not be fully compatible with your project.",
+      "projectPath": "/Users/malbasini/Documents/Software/Scadenzario/Scadenzario/Scadenzario.csproj",
+      "warningLevel": 1,
+      "filePath": "/Users/malbasini/Documents/Software/Scadenzario/Scadenzario/Scadenzario.csproj",
       "libraryId": "MySql.Data.EntityFramework",
       "targetGraphs": [
         "net9.0"

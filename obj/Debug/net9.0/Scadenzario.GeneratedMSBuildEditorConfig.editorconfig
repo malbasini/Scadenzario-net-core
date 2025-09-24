@@ -236,8 +236,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2NhZGVuemUvRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/malbasini/Documents/Software/Scadenzario/Scadenzario/Views/Scadenze/GraficoCategorie.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2NhZGVuemUvR3JhZmljb0NhdGVnb3JpZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/malbasini/Documents/Software/Scadenzario/Scadenzario/Views/Scadenze/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2NhZGVuemUvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/malbasini/Documents/Software/Scadenzario/Scadenzario/Views/Scadenze/_Layout1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2NhZGVuemUvX0xheW91dDEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/malbasini/Documents/Software/Scadenzario/Scadenzario/Views/Shared/Beneficiari/_BeneficiarioLine.cshtml]
