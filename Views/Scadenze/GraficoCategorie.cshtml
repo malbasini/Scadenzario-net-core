@@ -57,14 +57,13 @@
             <h2>
                @{
                    var spese = !string.IsNullOrEmpty(range) ? "Spese per beneficiario " + range : string.Empty;
-                   @spese.TrimEnd(';')
+                   @spese
                }
             </h2>
         </div>
    </div>  
     <div class="toolbar">
         <form method="get" asp-action="GraficoCategorie" asp-controller="Scadenze">
-            <input type="hidden" name="filter" value="@Model.Filter"/>
             <div class="row">
                 <div class="col-md-12 ms-xl-5">
                     <div class="input-group">
@@ -92,6 +91,9 @@
                                     asp-items="items">
 
                             </select>
+                        </div>
+                        <div class="input-group-text">
+                            filtro: <input type="text" name="filter" class="form-control form-control-sm" value="@Model.Filter" readonly="readonly"/>
                         </div>
                     </div>
                 </div>
